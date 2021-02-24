@@ -1,4 +1,6 @@
 async function joke10times() {
+    // per Matt there' a better way we'll learn that teaches us to 
+    //fire off all 10 jokes at the same time instead of the one at a time
     for (let i = 0; i < 10; i++) {
         console.log(await returnJokeFromObj())
     }
@@ -6,7 +8,7 @@ async function joke10times() {
 
 // GET request for joke metadata
 async function getJokeObj() {
-    let jokeData = await axios('https://icanhazdadjoke.com', {headers: {"Accept": "application/json"}})
+    let jokeData = await axios.get('https://icanhazdadjoke.com', {headers: {"Accept": "application/json"}})
     return jokeData;
 }
 
@@ -16,4 +18,4 @@ async function returnJokeFromObj() {
     return joke.data.joke
 }
 
-$(document).ready(joke10times)
+$(joke10times);
